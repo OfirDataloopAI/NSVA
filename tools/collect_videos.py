@@ -8,15 +8,16 @@ def findFiles(path): return glob.glob(path)
 collected_gid_eid_dict = {}
 for sp in ['train','test','val']:
 
-	path = './pbp_videos/%s/*'%sp
-	local_path = '.'
-	collected_videos = list(set(findFiles(path)))
+    path = './pbp_videos/%s/*'%sp
+    os.makedirs(name=os.path.dirname(path), exist_ok=True)
+    local_path = '.'
+    collected_videos = list(set(findFiles(path)))
 
-	collected_urls = []
-	for c_v in collected_videos:
-    		collected_gid_eid_dict[c_v.split('/')[-1][:-4]] = True
-    		#url = 'https://videos.nba.com/nba/pbp/media/'+a[0]+'/'+a[1]+'/'+a[2]+'/'+a[3]+'/'+a[4]+'/'+a[5]+'-'+a[6]+'-'+a[7]+'-'+a[8]+'-'+a[9]
-    		#collected_urls.append(url)
+    collected_urls = []
+    for c_v in collected_videos:
+        collected_gid_eid_dict[c_v.split('/')[-1][:-4]] = True
+        #url = 'https://videos.nba.com/nba/pbp/media/'+a[0]+'/'+a[1]+'/'+a[2]+'/'+a[3]+'/'+a[4]+'/'+a[5]+'-'+a[6]+'-'+a[7]+'-'+a[8]+'-'+a[9]
+        #collected_urls.append(url)
 
 urls = []
 url2gameinfo = {}
